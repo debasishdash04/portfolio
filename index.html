@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEBASISH DASH — Full-Stack Developer & Product Builder</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preconnect to Spline CDN so 3D assets start fetching early -->
+  <link rel="preconnect" href="https://prod.spline.design">
+  <link rel="preconnect" href="https://my.spline.design">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome: load after paint so it never blocks first render -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+  <!-- Spline Viewer Web Component (module, deferred by browser) -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.72/build/spline-viewer.js"></script>
+</head>
+<body>
+
+
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-brand">DEBASISH DASH</div>
+    <ul class="nav-links">
+      <li><a href="#services">SERVICES</a></li>
+      <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#integrations">TECH STACK</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+    <div class="nav-cta" style="gap: 1.5rem;">
+      <a href="#resume" class="resume-btn">RESUME</a>
+      <a href="#contact" style="color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.85rem;">// HIRE ME</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Massive Background Text -->
+    <div class="hero-bg-text">
+      <h1 class="massive-text">DIGITAL EXP</h1>
+    </div>
+
+    <!-- Central 3D Asset / Image -->
+    <div class="spline-container">
+      <div id="spline-fallback" style="display:none;"><img src="assets/hero.png" alt="Digital Robot Model" style="max-height: 75vh; max-width: 85%; object-fit: contain; z-index: 6; filter: drop-shadow(0 0 30px rgba(0, 229, 255, 0.2));"></div>
+      <spline-viewer url="https://prod.spline.design/msm-93IVk4kpllcY/scene.splinecode" background="transparent" style="width: 100%; height: 100%;"></spline-viewer>
+    </div>
+
+    <!-- Foreground Floating Text -->
+    <div class="hero-content">
+      <div class="content-left">
+        <p>// I'M DEBASISH — A DIGITAL PRODUCT BUILDER<br>
+        HELPING STARTUPS BUILD CLEAN, INTUITIVE,<br>
+        AND INTELLIGENT DIGITAL EXPERIENCES.</p>
+      </div>
+      <div class="content-right">
+        <p>// DESIGN THAT<br>SPEAKS YOUR BRAND</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services & Capabilities Section -->
+  <section id="services" class="services-section">
+    <h2 class="section-title">SERVICES &amp; CAPABILITIES</h2>
+    
+    <div class="services-grid">
+
+      <!-- Card 1: FRONTENDS -->
+      <div class="service-card" tabindex="0">
+        <div class="card-accent-bar"></div>
+        <div class="card-spline-container">
+          <div class="spline-lazy" data-spline-url="https://prod.spline.design/PAsbtQBA3-2Aywo4/scene.splinecode" style="width: 100%; height: 100%;"></div>
+        </div>
+        <div class="card-content">
+          <div class="card-icon-wrap"><i class="fa-solid fa-laptop-code"></i></div>
+          <h3>MODERN FRONTENDS</h3>
+          <div class="svc-pills">
+            <span class="svc-pill">React 19</span>
+            <span class="svc-pill">Tailwind</span>
+            <span class="svc-pill">Svelte</span>
+            <span class="svc-pill">Framer</span>
+          </div>
+          <p>Engineered for speed, beauty, and flawless user experiences that convert visitors into clients.</p>
+          <ul class="feature-list">
+            <li><i class="fa-solid fa-check"></i> HTML, CSS, JavaScript mastery</li>
+            <li><i class="fa-solid fa-check"></i> React 19 &amp; Tailwind CSS</li>
+            <li><i class="fa-solid fa-check"></i> Svelte &amp; Framer Motion animations</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card 2: SECURE BACKENDS -->
+      <div class="service-card clickable" onclick="openModal('backend-modal')" tabindex="0" role="button">
+        <div class="card-accent-bar"></div>
+        <div class="card-spline-container">
+          <div class="spline-lazy" data-spline-url="https://prod.spline.design/FLbJ25JVu9aE4wKh/scene.splinecode" style="width: 100%; height: 100%;"></div>
+        </div>
+        <div class="card-content">
+          <div class="card-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>ULTRA-SECURE BACKENDS <span class="card-arrow">&rarr;</span></h3>
+          <div class="svc-pills">
+            <span class="svc-pill">FastAPI</span>
+            <span class="svc-pill">Node.js</span>
+            <span class="svc-pill">Django</span>
+            <span class="svc-pill">Docker</span>
+          </div>
+          <p>Engineered for high performance, bulletproof security, and limitless scalability.</p>
+          <ul class="feature-list">
+            <li><i class="fa-solid fa-check"></i> FastAPI, Node.js, Express</li>
+            <li><i class="fa-solid fa-check"></i> Django &amp; Laravel</li>
+            <li><i class="fa-solid fa-check"></i> PostgreSQL, Redis, Docker</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card 3: AUTOMATION -->
+      <div class="service-card" tabindex="0">
+        <div class="card-accent-bar"></div>
+        <div class="card-spline-container">
+          <div class="spline-lazy" data-spline-url="https://prod.spline.design/O-lETJiYMdFUpobz/scene.splinecode" style="width: 100%; height: 100%;"></div>
+        </div>
+        <div class="card-content">
+          <div class="card-icon-wrap"><i class="fa-solid fa-bolt"></i></div>
+          <h3>BUSINESS AUTOMATION</h3>
+          <div class="svc-pills">
+            <span class="svc-pill">Zapier-style</span>
+            <span class="svc-pill">Cron Jobs</span>
+            <span class="svc-pill">Serverless</span>
+          </div>
+          <p>Intelligent bots, API-driven workflows, and cloud automation systems that save time and maximize efficiency.</p>
+          <ul class="feature-list">
+            <li><i class="fa-solid fa-check"></i> Automated bots &amp; cron workflows</li>
+            <li><i class="fa-solid fa-check"></i> API orchestration &amp; event pipelines</li>
+            <li><i class="fa-solid fa-check"></i> Cloud functions &amp; serverless triggers</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card 4: SAAS DASHBOARDS -->
+      <div class="service-card" tabindex="0">
+        <div class="card-accent-bar"></div>
+        <div class="card-content">
+          <div class="card-icon-wrap"><i class="fa-solid fa-chart-line"></i></div>
+          <h3>SAAS DASHBOARDS</h3>
+          <div class="svc-pills">
+            <span class="svc-pill">React Charts</span>
+            <span class="svc-pill">D3.js</span>
+            <span class="svc-pill">WebSockets</span>
+            <span class="svc-pill">RBAC</span>
+          </div>
+          <p>Realtime data streaming, dynamic chart visualizations, and secure role-based access control systems.</p>
+          <ul class="feature-list">
+            <li><i class="fa-solid fa-check"></i> Live data feeds &amp; analytics panels</li>
+            <li><i class="fa-solid fa-check"></i> Role-based multi-tenant access</li>
+            <li><i class="fa-solid fa-check"></i> Exportable reports &amp; audit logs</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card 5: PAYMENT GATEWAYS -->
+      <div class="service-card" tabindex="0">
+        <div class="card-accent-bar"></div>
+        <div class="card-content">
+          <div class="card-icon-wrap"><i class="fa-solid fa-credit-card"></i></div>
+          <h3>PAYMENT GATEWAYS</h3>
+          <div class="svc-pills">
+            <span class="svc-pill">Stripe</span>
+            <span class="svc-pill">Razorpay</span>
+            <span class="svc-pill">PayPal</span>
+            <span class="svc-pill">Cashfree</span>
+          </div>
+          <p>Seamless, secure, and compliant global payment processing for your digital platforms.</p>
+          <ul class="feature-list">
+            <li><i class="fa-solid fa-check"></i> Stripe, Razorpay &amp; PayPal integration</li>
+            <li><i class="fa-solid fa-check"></i> Cashfree &amp; webhook automation</li>
+            <li><i class="fa-solid fa-check"></i> Multi-currency &amp; subscription billing</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card 6: AI INTEGRATIONS -->
+      <div class="service-card" tabindex="0">
+        <div class="card-accent-bar"></div>
+        <div class="card-content">
+          <div class="card-icon-wrap"><i class="fa-solid fa-brain"></i></div>
+          <h3>AI INTEGRATIONS</h3>
+          <div class="svc-pills">
+            <span class="svc-pill">OpenAI</span>
+            <span class="svc-pill">Claude</span>
+            <span class="svc-pill">LangChain</span>
+            <span class="svc-pill">RAG</span>
+          </div>
+          <p>Powering intelligent, adaptive, and context-aware applications with cutting-edge AI.</p>
+          <ul class="feature-list">
+            <li><i class="fa-solid fa-check"></i> ChatGPT, Mistral, Claude APIs</li>
+            <li><i class="fa-solid fa-check"></i> Custom LLM pipelines &amp; LangChain</li>
+            <li><i class="fa-solid fa-check"></i> RAG systems &amp; fine-tuning</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Featured Projects Showcase Section -->
+  <section id="projects" class="projects-section">
+    <h2 class="section-title">FEATURED PROJECTS</h2>
+    <div class="projects-grid">
+      
+      <!-- Project Card 1 -->
+      <article class="project-card">
+        <div class="project-preview-box">
+          <div class="project-preview-overlay">
+            <span class="project-kicker">AI &amp; FULL-STACK</span>
+            <div class="project-preview-badge"><i class="fa-solid fa-bolt"></i> LIVE SYSTEM</div>
+          </div>
+          <div class="project-visual-graphic">
+            <div class="code-header">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+              <span class="code-title">apex-ai-core.py</span>
+            </div>
+            <pre class="code-snippet"><code><span class="code-keyword">async def</span> <span class="code-func">process_query</span>(prompt: str):
+  pipeline = RAGPipeline(model=<span class="code-str">"claude-3.5"</span>)
+  <span class="code-keyword">return await</span> pipeline.execute(prompt)</code></pre>
+          </div>
+        </div>
+        <div class="project-details">
+          <h3 class="project-title">Apex AI SaaS Platform</h3>
+          <p class="project-desc">Intelligent analytics dashboard featuring real-time LLM query processing, RAG pipelines, and automated reporting workflows.</p>
+          <div class="project-tags">
+            <span class="project-tag">React 19</span>
+            <span class="project-tag">FastAPI</span>
+            <span class="project-tag">LangChain</span>
+            <span class="project-tag">PostgreSQL</span>
+            <span class="project-tag">Tailwind</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="project-btn primary">// VIEW DEMO <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="project-btn secondary"><i class="fa-brands fa-github"></i> REPO</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project Card 2 -->
+      <article class="project-card">
+        <div class="project-preview-box fintech">
+          <div class="project-preview-overlay">
+            <span class="project-kicker">FINTECH &amp; AUTOMATION</span>
+            <div class="project-preview-badge"><i class="fa-solid fa-shield-halved"></i> SECURE GATEWAY</div>
+          </div>
+          <div class="project-visual-graphic">
+            <div class="code-header">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+              <span class="code-title">omnipay-webhook.js</span>
+            </div>
+            <pre class="code-snippet"><code><span class="code-keyword">const</span> stripe = <span class="code-func">require</span>(<span class="code-str">'stripe'</span>)(KEY);
+app.<span class="code-func">post</span>(<span class="code-str">'/webhook'</span>, <span class="code-keyword">async</span> (req, res) => {
+  <span class="code-keyword">await</span> paymentService.<span class="code-func">verifyAndRoute</span>(req);
+});</code></pre>
+          </div>
+        </div>
+        <div class="project-details">
+          <h3 class="project-title">OmniPay Global Checkout</h3>
+          <p class="project-desc">Ultra-fast global payment gateway with automated webhooks, Stripe/PayPal integration, and multi-currency transaction routing.</p>
+          <div class="project-tags">
+            <span class="project-tag">Node.js</span>
+            <span class="project-tag">Express</span>
+            <span class="project-tag">Stripe API</span>
+            <span class="project-tag">Redis</span>
+            <span class="project-tag">Docker</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="project-btn primary">// VIEW DEMO <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="project-btn secondary"><i class="fa-brands fa-github"></i> REPO</a>
+          </div>
+        </div>
+      </article>
+
+      
+      <!-- Project Card 3 -->
+      <article class="project-card">
+        <div class="project-preview-box security">
+          <div class="project-preview-overlay">
+            <span class="project-kicker">CLOUD &amp; SECURITY</span>
+            <div class="project-preview-badge"><i class="fa-solid fa-server"></i> INFRASTRUCTURE</div>
+          </div>
+          <div class="project-visual-graphic">
+            <div class="code-header">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+              <span class="code-title">cybervault-cluster.yml</span>
+            </div>
+            <pre class="code-snippet"><code><span class="code-keyword">services</span>:
+  <span class="code-func">api</span>:
+    <span class="code-keyword">image</span>: cybervault/core:latest
+    <span class="code-keyword">deploy</span>: { <span class="code-str">replicas</span>: 8 }</code></pre>
+          </div>
+        </div>
+        <div class="project-details">
+          <h3 class="project-title">CyberVault Cloud Manager</h3>
+          <p class="project-desc">High-security cloud infrastructure management portal with role-based access control, live cluster metrics, and automated backups.</p>
+          <div class="project-tags">
+            <span class="project-tag">Svelte</span>
+            <span class="project-tag">Django</span>
+            <span class="project-tag">Docker</span>
+            <span class="project-tag">PostgreSQL</span>
+            <span class="project-tag">Tailwind</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="project-btn primary">// VIEW DEMO <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="project-btn secondary"><i class="fa-brands fa-github"></i> REPO</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Integrations / Tech Stack Section -->
+  <section id="integrations" class="integrations-section">
+    <h2 class="section-title">INTEGRATIONS & ECOSYSTEM</h2>
+    <div class="integrations-grid">
+      
+      <!-- Left Panel: Frontend Tech Stack -->
+      <div class="logo-panel">
+        <div class="logo-row" title="React">
+          <i class="fa-brands fa-react" style="font-size: 2.5rem; color: #61dafb;"></i>
+        </div>
+        <div class="logo-row" title="Vue.js">
+          <i class="fa-brands fa-vuejs" style="font-size: 2.5rem; color: #42b883;"></i>
+        </div>
+        <div class="logo-row" title="Svelte">
+          <i class="fa-solid fa-fire" style="font-size: 2.5rem; color: #ff3e00;"></i>
+        </div>
+        <div class="logo-row" title="Next.js">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="38" height="38" fill="none">
+            <circle cx="64" cy="64" r="64" fill="#000"/>
+            <path d="M106.317 112.014 49.167 38H38v52h8.5V49.314l52.5 68.372a64.15 64.15 0 0 0 7.317-5.672Z" fill="url(#a)"/>
+            <path d="M81.5 38h8.5v52h-8.5z" fill="url(#b)"/>
+            <defs>
+              <linearGradient id="a" x1="109" y1="100.5" x2="144.5" y2="153" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#fff"/>
+                <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="b" x1="81.5" y1="38" x2="81.737" y2="72.417" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#fff"/>
+                <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Middle 3D Glowing Hub -->
+      <div class="integrations-3d-hub">
+        <iframe src='https://my.spline.design/cubeandballs-q4tnEwYrHymt5qNYfdqBPB2b/' frameborder='0' width='100%' height='100%' style="border: none; display: block; pointer-events: auto;"></iframe>
+      </div>
+
+      <!-- Right Panel: Backend & Infra Tech Stack -->
+      <div class="logo-panel">
+        <div class="logo-row" title="Node.js">
+          <i class="fa-brands fa-node-js" style="font-size: 2.5rem; color: #68a063;"></i>
+        </div>
+        <div class="logo-row" title="Python">
+          <i class="fa-brands fa-python" style="font-size: 2.5rem; color: #3776ab;"></i>
+        </div>
+        <div class="logo-row" title="PostgreSQL">
+          <i class="fa-solid fa-database" style="font-size: 2.3rem; color: #336791;"></i>
+        </div>
+        <div class="logo-row" title="Docker">
+          <i class="fa-brands fa-docker" style="font-size: 2.5rem; color: #2496ed;"></i>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- The Stack / Tech Cloud Section -->
+  <section class="industries-section">
+    <div class="stack-header-bar">
+      <span class="stack-kicker">THE STACK</span>
+      <div class="stack-line"></div>
+    </div>
+
+    <div class="stack-marquee-wrapper">
+      
+      <!-- Row 1: Mobile & Frontend -->
+      <div class="stack-marquee-row scroll-left">
+        <div class="stack-marquee-content">
+          <div class="stack-pill"><span class="stack-dot"></span>React Native</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Expo</div>
+          <div class="stack-pill"><span class="stack-dot"></span>React.js</div>
+          <div class="stack-pill"><span class="stack-dot"></span>TypeScript</div>
+          <div class="stack-pill"><span class="stack-dot"></span>JavaScript</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Expo Router</div>
+          <div class="stack-pill"><span class="stack-dot"></span>React Navigation</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Reanimated</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Gesture Handler</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Tailwind CSS</div>
+        </div>
+        <div class="stack-marquee-content" aria-hidden="true">
+          <div class="stack-pill"><span class="stack-dot"></span>React Native</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Expo</div>
+          <div class="stack-pill"><span class="stack-dot"></span>React.js</div>
+          <div class="stack-pill"><span class="stack-dot"></span>TypeScript</div>
+          <div class="stack-pill"><span class="stack-dot"></span>JavaScript</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Expo Router</div>
+          <div class="stack-pill"><span class="stack-dot"></span>React Navigation</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Reanimated</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Gesture Handler</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Tailwind CSS</div>
+        </div>
+      </div>
+
+      <!-- Row 2: Backend & Database -->
+      <div class="stack-marquee-row scroll-right">
+        <div class="stack-marquee-content">
+          <div class="stack-pill"><span class="stack-dot"></span>PostgreSQL</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Node.js</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Express.js</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Python</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Django</div>
+          <div class="stack-pill"><span class="stack-dot"></span>REST APIs</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Firebase</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Firestore</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Supabase</div>
+          <div class="stack-pill"><span class="stack-dot"></span>PostgreSQL</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Node.js</div>
+        </div>
+        <div class="stack-marquee-content" aria-hidden="true">
+          <div class="stack-pill"><span class="stack-dot"></span>PostgreSQL</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Node.js</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Express.js</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Python</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Django</div>
+          <div class="stack-pill"><span class="stack-dot"></span>REST APIs</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Firebase</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Firestore</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Supabase</div>
+          <div class="stack-pill"><span class="stack-dot"></span>PostgreSQL</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Node.js</div>
+        </div>
+      </div>
+
+      <!-- Row 3: Native APIs & Integrations -->
+      <div class="stack-marquee-row scroll-left-alt">
+        <div class="stack-marquee-content">
+          <div class="stack-pill"><span class="stack-dot"></span>Play Console</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Google Sign-In / OAuth</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Push Notifications</div>
+          <div class="stack-pill"><span class="stack-dot"></span>RevenueCat</div>
+          <div class="stack-pill"><span class="stack-dot"></span>react-native-iap</div>
+          <div class="stack-pill"><span class="stack-dot"></span>AsyncStorage</div>
+          <div class="stack-pill"><span class="stack-dot"></span>expo-local-authentication</div>
+          <div class="stack-pill"><span class="stack-dot"></span>EAS Build</div>
+        </div>
+        <div class="stack-marquee-content" aria-hidden="true">
+          <div class="stack-pill"><span class="stack-dot"></span>Play Console</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Google Sign-In / OAuth</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Push Notifications</div>
+          <div class="stack-pill"><span class="stack-dot"></span>RevenueCat</div>
+          <div class="stack-pill"><span class="stack-dot"></span>react-native-iap</div>
+          <div class="stack-pill"><span class="stack-dot"></span>AsyncStorage</div>
+          <div class="stack-pill"><span class="stack-dot"></span>expo-local-authentication</div>
+          <div class="stack-pill"><span class="stack-dot"></span>EAS Build</div>
+        </div>
+      </div>
+
+      <!-- Row 4: DevOps, Tools & CI/CD -->
+      <div class="stack-marquee-row scroll-right-alt">
+        <div class="stack-marquee-content">
+          <div class="stack-pill"><span class="stack-dot"></span>Git</div>
+          <div class="stack-pill"><span class="stack-dot"></span>GitHub</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Docker</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Postman</div>
+          <div class="stack-pill"><span class="stack-dot"></span>VS Code</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Playwright</div>
+          <div class="stack-pill"><span class="stack-dot"></span>GitHub Actions</div>
+          <div class="stack-pill"><span class="stack-dot"></span>CI/CD</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Git</div>
+          <div class="stack-pill"><span class="stack-dot"></span>GitHub</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Docker</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Postman</div>
+        </div>
+        <div class="stack-marquee-content" aria-hidden="true">
+          <div class="stack-pill"><span class="stack-dot"></span>Git</div>
+          <div class="stack-pill"><span class="stack-dot"></span>GitHub</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Docker</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Postman</div>
+          <div class="stack-pill"><span class="stack-dot"></span>VS Code</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Playwright</div>
+          <div class="stack-pill"><span class="stack-dot"></span>GitHub Actions</div>
+          <div class="stack-pill"><span class="stack-dot"></span>CI/CD</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Git</div>
+          <div class="stack-pill"><span class="stack-dot"></span>GitHub</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Docker</div>
+          <div class="stack-pill"><span class="stack-dot"></span>Postman</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Dashboard Callout -->
+  <section class="dashboard-section">
+    <div class="dashboard-content">
+      <h2 class="massive-gradient-text">ENGINEERED FOR HIGH SPEED, BEAUTY, AND SCALE</h2>
+    </div>
+  </section>
+
+  <!-- Breakout Interactive Arcade Section -->
+  <section class="breakout-game-section">
+    <div class="breakout-game-container">
+      
+      <!-- Game Top Bar -->
+      <div class="game-top-bar">
+        <div class="game-tagline">
+          <span>Break it if you can. It still ships.</span>
+        </div>
+        <div class="game-top-dots" id="game-lives-indicator">
+          <span class="active"></span>
+          <span class="active"></span>
+          <span class="active"></span>
+        </div>
+      </div>
+
+      <!-- Canvas Wrapper -->
+      <div class="game-canvas-wrapper">
+        <canvas id="breakout-canvas"></canvas>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Get in Touch / Contact & Footer Section -->
+  <section id="contact" class="get-in-touch-section">
+
+    <!-- Animated Swirling Background Blobs -->
+    <div class="git-bg-blobs" aria-hidden="true">
+      <div class="git-blob git-blob-1"></div>
+      <div class="git-blob git-blob-2"></div>
+      <div class="git-blob git-blob-3"></div>
+      <div class="git-blob git-blob-4"></div>
+    </div>
+
+    <div class="get-in-touch-container">
+      
+      <!-- Left Column: Status, Title, Pitch, Action Buttons -->
+      <div class="git-left">
+        <div class="git-badge">
+          <span class="git-badge-dot"></span>
+          <span class="git-badge-text">AVAILABLE FOR WORK</span>
+        </div>
+        
+        <h2 class="git-title">Get in touch</h2>
+        
+        <p class="git-desc">
+          Open for freelance work, contract roles and collaborations &mdash; React Native apps in particular. WhatsApp gets the fastest reply.
+        </p>
+        
+        <div class="git-actions">
+          <a href="https://wa.me/917853039849" target="_blank" rel="noopener noreferrer" class="git-btn git-btn-primary">
+            <span>Message on WhatsApp</span>
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <a href="mailto:Debasishdash133@gmail.com" class="git-btn git-btn-secondary">
+            <span>Send an email</span>
+            <i class="fa-regular fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Contact Details Card -->
+      <div class="git-right">
+        <div class="git-card">
+          
+          <!-- Row 1: Email -->
+          <div class="git-card-row">
+            <span class="git-label">EMAIL</span>
+            <a href="mailto:Debasishdash133@gmail.com" class="git-value git-link">Debasishdash133@gmail.com</a>
+          </div>
+
+          <!-- Row 2: Phone -->
+          <div class="git-card-row">
+            <span class="git-label">PHONE</span>
+            <a href="tel:+917853039849" class="git-value git-link">+91 7853039849</a>
+          </div>
+
+          <!-- Row 3: Based In -->
+          <div class="git-card-row">
+            <span class="git-label">BASED IN</span>
+            <span class="git-value">Odisha, Balangir, INDIA</span>
+          </div>
+
+          <!-- Row 4: Elsewhere -->
+          <div class="git-card-row">
+            <span class="git-label">ELSEWHERE</span>
+            <div class="git-socials">
+              <a href="#" class="git-social-btn" title="Portfolio" aria-label="Portfolio">
+                <i class="fa-solid fa-play" style="font-size: 0.75rem; transform: translateX(1px);"></i>
+              </a>
+              <a href="#" class="git-social-btn" title="LinkedIn" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="git-social-btn" title="GitHub" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Footer Row -->
+    <footer class="git-footer">
+      <div class="git-footer-container">
+        <p class="git-copyright">&copy; 2026 Debasish Dash. All rights reserved.</p>
+        <div class="git-footer-links">
+          <a href="#">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <span class="git-footer-divider">|</span>
+          <a href="#privacy">Privacy policy</a>
+          <a href="#terms">Terms</a>
+        </div>
+      </div>
+    </footer>
+  </section>
+
+
+  <!-- Modal Overlay System -->
+  <div class="modal-overlay" id="backend-modal">
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal('backend-modal')">&times;</button>
+      
+      <div class="modal-header">
+        <span class="modal-kicker">USE CASES</span>
+        <h2 class="modal-title">What Can You Build?</h2>
+        <p class="modal-subtitle">Cloud Functions power critical backend logic across industries.</p>
+      </div>
+      
+      <div class="modal-grid">
+        <!-- 1 -->
+        <div class="usecase-card">
+          <div class="uc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div class="uc-content">
+            <h4>Data Validation</h4>
+            <p>Enforce business rules server-side. Validate inputs, check constraints, and reject invalid data before it's saved.</p>
+          </div>
+        </div>
+        <!-- 2 -->
+        <div class="usecase-card">
+          <div class="uc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <div class="uc-content">
+            <h4>Payment Processing</h4>
+            <p>Integrate with Stripe, PayPal, or other processors. Handle webhooks, validate payments, update order status.</p>
+          </div>
+        </div>
+        <!-- 3 -->
+        <div class="usecase-card">
+          <div class="uc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="uc-content">
+            <h4>Email Notifications</h4>
+            <p>Send transactional emails on data changes. Welcome emails, order confirmations, password resets.</p>
+          </div>
+        </div>
+        <!-- 4 -->
+        <div class="usecase-card">
+          <div class="uc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <div class="uc-content">
+            <h4>Third-Party APIs</h4>
+            <p>Connect to external services. Weather data, social media, analytics, AI services — all from your backend.</p>
+          </div>
+        </div>
+        <!-- 5 -->
+        <div class="usecase-card">
+          <div class="uc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="uc-content">
+            <h4>Report Generation</h4>
+            <p>Generate PDFs, spreadsheets, or data exports. Run as background jobs for large datasets.</p>
+          </div>
+        </div>
+        <!-- 6 -->
+        <div class="usecase-card">
+          <div class="uc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          </div>
+          <div class="uc-content">
+            <h4>Data Sync</h4>
+            <p>Keep data in sync with external systems. CRM updates, inventory sync, analytics pipelines.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="spline-lazy.js" defer></script>
+  <script src="breakout-game.js" defer></script>
+</body>
+</html>

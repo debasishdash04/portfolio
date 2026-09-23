@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Page Not Found | Debasish</title>
+  <link rel="stylesheet" href="./404.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100vw;
+      min-height: 100vh;
+      background-color: #ffffff;
+      font-family: 'Arvo', serif, system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
+    .wrapper-404 {
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem;
+    }
+    .title-404 {
+      font-size: clamp(120px, 16vw, 180px);
+      font-weight: 800;
+      color: #222;
+      margin: 0;
+      line-height: 0.9;
+      letter-spacing: -3px;
+    }
+    .gif-404 {
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      max-height: 480px;
+      object-fit: contain;
+      margin-top: -30px;
+      margin-bottom: 0px;
+    }
+    .text-box-404 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-top: -10px;
+    }
+    .heading-404 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      color: #111;
+    }
+    .subtext-404 {
+      font-size: clamp(18px, 2.5vw, 22px);
+      color: #555;
+      max-width: 650px;
+      line-height: 1.5;
+    }
+    .btn-404 {
+      margin-top: 15px;
+      color: #ffffff !important;
+      padding: 16px 48px;
+      background: #39ac31;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-decoration: none !important;
+      border-radius: 50px;
+      box-shadow: 0 6px 25px rgba(57, 172, 49, 0.45);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-404:hover {
+      background: #2e9427;
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(57, 172, 49, 0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <main class="wrapper-404">
+    <!-- 1. Massive 404 Title -->
+    <h1 class="title-404">404</h1>
+
+    <!-- 2. Extra Large Animation GIF -->
+    <img src="./dribbble_1.gif" alt="404 Animation" class="gif-404">
+
+    <!-- 3. Prominent Content Box & CTA -->
+    <div class="text-box-404">
+      <h2 class="heading-404">Look like you're lost</h2>
+      <p class="subtext-404">The page you are looking for is not available or you are currently offline!</p>
+      <a href="./index.html" class="btn-404">Go to Home</a>
+    </div>
+  </main>
+
+  <!-- Automatic reconnect listener -->
+  <script>
+    function returnHome() {
+      window.location.href = './index.html';
+    }
+    window.addEventListener('online', returnHome);
+    setInterval(() => {
+      if (navigator.onLine) returnHome();
+    }, 1500);
+  </script>
+
+</body>
+</html>
