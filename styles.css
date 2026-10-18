@@ -1610,49 +1610,41 @@ body {
   /* ── Hero ── */
   .hero {
     padding: 5rem 1.2rem 2.5rem 1.2rem;
-    min-height: 100svh; /* use small viewport height to avoid browser chrome overlap */
+    min-height: 100svh;
   }
   .massive-text {
-    font-size: clamp(5rem, 22vw, 8rem); /* prevent horizontal overflow */
+    font-size: clamp(2.4rem, 11.5vw, 4.4rem);
     letter-spacing: -1px;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1;
+    margin: 0 auto;
+    width: 100%;
   }
   .spline-container {
-    transform: translate(-50%, -50%) scale(1);
-    height: 55vw;
-    max-height: 320px;
-    min-height: 200px;
-    max-width: 100vw;
-    top: 44%;
-  }
-  /* Hide heavy Spline 3D on mobile — show fallback image instead */
-  .spline-container spline-viewer {
-    display: none !important;
-  }
-  #spline-fallback {
-    display: flex !important;
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.15);
+    width: 100vw;
+    height: 65vh;
+    max-height: 520px;
+    z-index: 5;
+    pointer-events: none;
+    display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .spline-container spline-viewer {
+    display: block !important;
     width: 100%;
     height: 100%;
+    pointer-events: auto;
   }
-  #spline-fallback img {
-    max-height: 100%;
-    max-width: 90%;
-    object-fit: contain;
-  }
-
-  /* Fix massive text overflow on mobile */
-  .massive-text {
-    white-space: normal;
-    word-break: break-word;
-    text-align: center;
-    line-height: 0.85;
+  #spline-fallback {
+    display: none;
   }
 
-  /* Hide empty Spline card containers on mobile — show just the icon/text content */
-  .card-spline-container {
-    display: none !important;
-  }
   .hero-content {
     flex-direction: column;
     gap: 1.2rem;
@@ -1682,6 +1674,18 @@ body {
   }
   .service-card {
     min-height: auto;
+  }
+  /* 3D Spline Cards on mobile */
+  .card-spline-container {
+    display: flex !important;
+    width: 100%;
+    height: 170px;
+    margin-bottom: 1.2rem;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.3);
+    align-items: center;
+    justify-content: center;
   }
 
   /* ── Projects ── */
@@ -1720,9 +1724,25 @@ body {
     justify-content: center;
     gap: 1rem;
   }
-  /* Hide empty 3D hub on mobile — no Spline = no empty black box */
+  /* 3D Glowing Hub on mobile */
   .integrations-3d-hub {
-    display: none !important;
+    display: block !important;
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    height: 280px;
+    margin: 1rem auto;
+    overflow: hidden;
+  }
+  .integrations-3d-hub iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    transform: translate(-50%, -50%);
+    border: none;
+    pointer-events: none;
   }
 
   /* ── Stack Marquee ── */
@@ -1794,18 +1814,15 @@ body {
 /* ── Extra small screens (< 400px) ── */
 @media (max-width: 400px) {
   .massive-text {
-    font-size: 4.5rem;
+    font-size: clamp(2rem, 10.5vw, 3.2rem);
+    white-space: nowrap;
   }
   .spline-container {
-    transform: translate(-50%, -48%) scale(0.9);
+    transform: translate(-50%, -50%) scale(1);
+    height: 60vh;
   }
   .spline-container spline-viewer {
-    display: none !important;
-  }
-  #spline-fallback {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
+    display: block !important;
     width: 100%;
     height: 100%;
   }

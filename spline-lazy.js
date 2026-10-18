@@ -17,27 +17,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Tight margin: only load when the card is nearly in view
   }, { rootMargin: '50px', threshold: 0.1 });
 
-  // Low-end / mobile: skip ALL Spline WebGL to save CPU & battery
-  const isLowEnd = window.innerWidth < 768 || navigator.hardwareConcurrency <= 2;
+  // Observe all Spline lazy elements on both desktop and mobile
+  document.querySelectorAll('.spline-lazy').forEach(el => splineObserver.observe(el));
 
-  if (isLowEnd) {
-    const splineContainer = document.querySelector('.spline-container');
-    const splineFallback  = document.getElementById('spline-fallback');
-    if (splineContainer) splineContainer.style.display = 'none';
-    if (splineFallback)  splineFallback.style.display  = 'block';
-    // Don't observe lazy cards on low-end at all
-  } else {
-    document.querySelectorAll('.spline-lazy').forEach(el => splineObserver.observe(el));
-
-    // Fallback: show hero image if Spline hasn't started in 8s
-    setTimeout(() => {
-      const heroViewer = document.querySelector('.spline-container spline-viewer');
-      if (!heroViewer || !heroViewer.shadowRoot) {
-        const fallback = document.getElementById('spline-fallback');
-        if (fallback) fallback.style.display = 'block';
-      }
-    }, 8000);
-  }
+  // Fallback: show hero image if Spline hasn't started in 8s
+  setTimeout(() => {
+    const heroViewer = document.querySelector('.spline-container spline-viewer');
+    if (!heroViewer || !heroViewer.shadowRoot) {
+      const fallback = document.getElementById('spline-fallback');
+      if (fallback) fallback.style.display = 'block';
+    }
+  }, 8000);
 });
 
 // --- Modal System ---

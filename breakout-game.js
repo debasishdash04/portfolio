@@ -115,22 +115,24 @@
 
     const charWidth = 5;
     const charHeight = 7;
-    const charSpacing = 3; // Space between letters
-    const lineSpacing = 4; // Vertical spacing between HELLO and WORLD
+    // Responsive spacing between characters and lines based on canvas width
+    const charSpacing = width < 420 ? 1 : (width < 640 ? 2 : 3);
+    const lineSpacing = width < 420 ? 2 : (width < 640 ? 3 : 4);
 
     const totalColsLine1 = line1.length * charWidth + (line1.length - 1) * charSpacing;
     const totalColsLine2 = line2.length * charWidth + (line2.length - 1) * charSpacing;
     const maxCols = Math.max(totalColsLine1, totalColsLine2);
     const totalRows = charHeight * 2 + lineSpacing;
 
-    // Calculate dynamic brick size constrained by BOTH width and height (increased by 10%)
-    const maxBlockByWidth = Math.floor((width * 0.92) / maxCols);
-    const maxBlockByHeight = Math.floor((height * 0.54) / totalRows); // Bricks occupy up to ~54% of canvas height
+    // Calculate dynamic brick size with safety margins so words fit perfectly inside canvas
+    const availableWidth = width * 0.86;
+    const maxBlockByWidth = Math.floor(availableWidth / maxCols);
+    const maxBlockByHeight = Math.floor((height * 0.50) / totalRows);
     let blockSize = Math.min(maxBlockByWidth, maxBlockByHeight);
-    blockSize = Math.max(9, Math.min(blockSize, 22)); // Scaled up by 10%
+    blockSize = Math.max(4, Math.min(blockSize, 22));
 
-    const brickMargin = Math.max(2, Math.floor(blockSize * 0.20));
-    const renderBlockSize = blockSize - brickMargin;
+    const brickMargin = Math.max(1, Math.floor(blockSize * 0.18));
+    const renderBlockSize = Math.max(3, blockSize - brickMargin);
 
     const totalWidth = maxCols * blockSize;
     const startX = Math.floor((width - totalWidth) / 2);
@@ -204,7 +206,7 @@
     ctx.resetTransform?.();
     ctx.scale(dpr, dpr);
 
-    paddle.width = Math.max(100, Math.min(160, width * 0.18));
+    paddle.width = Math.max(55, Math.min(160, width * 0.20));
     paddle.height = Math.max(10, Math.min(14, height * 0.024));
     paddle.y = height - paddle.height - 24; // Paddle anchored cleanly at the very bottom
     paddle.x = (width - paddle.width) / 2;
