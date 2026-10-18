@@ -1621,6 +1621,17 @@ body {
     height: 60vh;
     max-width: 100vw;
   }
+  /* Hide heavy Spline 3D on mobile — show fallback image instead */
+  .spline-container spline-viewer {
+    display: none !important;
+  }
+  #spline-fallback {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
   .hero-content {
     flex-direction: column;
     gap: 1.2rem;
@@ -1755,6 +1766,16 @@ body {
   }
   .spline-container {
     transform: translate(-50%, -48%) scale(0.9);
+  }
+  .spline-container spline-viewer {
+    display: none !important;
+  }
+  #spline-fallback {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
   .git-title {
     font-size: 2rem;
