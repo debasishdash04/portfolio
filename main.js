@@ -9,9 +9,9 @@ scene.background = new THREE.Color(0x0a0a14);
 scene.fog = new THREE.FogExp2(0x0a0a14, 0.007);
 
 const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // cap at 2x — no visible gain above that
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 container.appendChild(renderer.domElement);
@@ -27,8 +27,8 @@ scene.add(hemiLight);
 const dirLight = new THREE.DirectionalLight(0xffe0b2, 0.8);
 dirLight.position.set(100, 150, 50);
 dirLight.castShadow = true;
-dirLight.shadow.mapSize.width = 2048;
-dirLight.shadow.mapSize.height = 2048;
+dirLight.shadow.mapSize.width = 1024;  // was 2048 — halves shadow cost
+dirLight.shadow.mapSize.height = 1024;
 dirLight.shadow.camera.near = 0.5;
 dirLight.shadow.camera.far = 500;
 const d = 150;
@@ -151,8 +151,10 @@ for (let x = -groundSize/2 + 20; x < groundSize/2 - 20; x += gridSpacing) {
             const building = new THREE.Mesh(buildingGeometry, mat);
             building.scale.set(bWidth, bHeight, bDepth);
             building.position.set(posX, bHeight / 2, posZ);
-            building.castShadow = true;
-            building.receiveShadow = true;
+            // Only cast/receive shadows for buildings near centre — big perf win
+            const distFromCenter = Math.sqrt(posX * posX + posZ * posZ);
+            building.castShadow = distFromCenter < 200;
+            building.receiveShadow = distFromCenter < 200;
             
             // Store bounding box data for collision detection
             building.userData = {
@@ -588,9 +590,9 @@ function animate() {
         c.pomL.position.y = 0.6 + Math.sin(time * c.speed * 1.5 + c.phase) * 0.25;
         c.pomR.position.y = 0.6 + Math.cos(time * c.speed * 1.5 + c.phase) * 0.25;
         
-        // Face the player if they are nearby
-        const dist = c.mesh.position.distanceTo(player.pos);
-        if (dist < 40) {
+        // Face the player if they are nearby (use squared distance — no sqrt needed)
+        const dist = c.mesh.position.distanceToSquared(player.pos);
+        if (dist < 1600) { // 40*40 = 1600
             c.mesh.lookAt(player.pos.x, c.mesh.position.y, player.pos.z);
         }
     });
