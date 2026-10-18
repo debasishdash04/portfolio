@@ -1617,9 +1617,12 @@ body {
     letter-spacing: -1px;
   }
   .spline-container {
-    transform: translate(-50%, -48%) scale(1.05);
-    height: 60vh;
+    transform: translate(-50%, -50%) scale(1);
+    height: 55vw;
+    max-height: 320px;
+    min-height: 200px;
     max-width: 100vw;
+    top: 44%;
   }
   /* Hide heavy Spline 3D on mobile — show fallback image instead */
   .spline-container spline-viewer {
@@ -1631,6 +1634,24 @@ body {
     justify-content: center;
     width: 100%;
     height: 100%;
+  }
+  #spline-fallback img {
+    max-height: 100%;
+    max-width: 90%;
+    object-fit: contain;
+  }
+
+  /* Fix massive text overflow on mobile */
+  .massive-text {
+    white-space: normal;
+    word-break: break-word;
+    text-align: center;
+    line-height: 0.85;
+  }
+
+  /* Hide empty Spline card containers on mobile — show just the icon/text content */
+  .card-spline-container {
+    display: none !important;
   }
   .hero-content {
     flex-direction: column;
@@ -1662,9 +1683,6 @@ body {
   .service-card {
     min-height: auto;
   }
-  .card-spline-container {
-    height: 160px;
-  }
 
   /* ── Projects ── */
   .projects-section {
@@ -1673,6 +1691,19 @@ body {
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+  /* Fix code snippet overflow in project cards on mobile */
+  .project-preview-box {
+    overflow: hidden;
+  }
+  .code-snippet {
+    font-size: 0.65rem;
+    overflow-x: hidden;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  .project-visual-graphic {
+    overflow: hidden;
   }
 
   /* ── Integrations / Tech Stack ── */
@@ -1689,8 +1720,9 @@ body {
     justify-content: center;
     gap: 1rem;
   }
+  /* Hide empty 3D hub on mobile — no Spline = no empty black box */
   .integrations-3d-hub {
-    height: 260px;
+    display: none !important;
   }
 
   /* ── Stack Marquee ── */
