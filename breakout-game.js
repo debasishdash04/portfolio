@@ -87,7 +87,7 @@
 
   let bricks = [];
   let particles = [];
-  let ball = { x: 0, y: 0, vx: 0, vy: 0, radius: 7, isHolding: false, holdTimer: 0, speed: 3.5 };
+  let ball = { x: 0, y: 0, vx: 0, vy: 0, radius: 9, isHolding: false, holdTimer: 0, speed: 6.2 };
   let paddle = { x: 0, y: 0, width: 140, height: 12, targetX: 0 };
   let isAutoPlay = true;
   let lastUserActivity = 0;
@@ -172,12 +172,12 @@
   }
 
   function resetBall(delayLaunch = true) {
-    ball.radius = Math.max(5, Math.min(7.5, width * 0.0075));
+    ball.radius = Math.max(7.5, Math.min(10.5, width * 0.010));
     ball.x = paddle.x + paddle.width / 2;
     ball.y = paddle.y - ball.radius - 4;
     
-    // Smooth, relaxed, controllable arcade speed
-    ball.speed = Math.max(2.8, Math.min(4.0, width * 0.0036));
+    // Fast, ultra-responsive arcade speed
+    ball.speed = Math.max(5.4, Math.min(7.2, width * 0.0068));
     const angle = (Math.random() * 0.5 - 0.25) - Math.PI / 2; // upwards with slight randomized tilt
     ball.vx = Math.sin(angle) * ball.speed;
     ball.vy = -Math.abs(Math.cos(angle) * ball.speed);
@@ -194,8 +194,8 @@
   function resize() {
     const rect = container.getBoundingClientRect();
     width = rect.width;
-    // Generous canvas height so letters and paddle have plenty of separation
-    height = Math.max(500, Math.min(620, Math.floor(window.innerHeight * 0.72)));
+    // Proportional canvas height to match the new compact width
+    height = Math.max(460, Math.min(540, Math.floor(window.innerHeight * 0.65)));
 
     dpr = window.devicePixelRatio || 1;
     canvas.width = width * dpr;
@@ -251,7 +251,7 @@
     const count = 6;
     for (let i = 0; i < count; i++) {
       const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 2.5 + 1;
+      const speed = Math.random() * 3.5 + 1.5;
       particles.push({
         x: x,
         y: y,
@@ -287,14 +287,14 @@
     }
 
     if (isAutoPlay) {
-      // Predict ball position smoothly
-      const target = ball.x - paddle.width / 2 + (ball.vx * 3);
-      paddle.targetX += (target - paddle.targetX) * 0.12;
+      // Predict ball position smoothly for faster speed
+      const target = ball.x - paddle.width / 2 + (ball.vx * 4.5);
+      paddle.targetX += (target - paddle.targetX) * 0.25;
     }
 
     // Smooth paddle movement
     paddle.targetX = Math.max(0, Math.min(width - paddle.width, paddle.targetX));
-    paddle.x += (paddle.targetX - paddle.x) * 0.25;
+    paddle.x += (paddle.targetX - paddle.x) * 0.38;
 
     // Holding launch state
     if (ball.isHolding) {
