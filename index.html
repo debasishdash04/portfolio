@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DEBASISH DASH — Full-Stack Developer & Product Builder</title>
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=14">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Preconnect to Spline CDN so 3D assets start fetching early -->
@@ -28,12 +28,21 @@
     <ul class="nav-links">
       <li><a href="#services">SERVICES</a></li>
       <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#branding">BRANDING</a></li>
       <li><a href="#integrations">TECH STACK</a></li>
+      <li><a href="faq.html">FAQ</a></li>
       <li><a href="#contact">CONTACT</a></li>
     </ul>
-    <div class="nav-cta" style="gap: 1.5rem;">
-      <a href="#resume" class="resume-btn">RESUME</a>
-      <a href="#contact" style="color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.85rem;">// HIRE ME</a>
+    <div class="nav-cta">
+      <!-- Live Local Time / Working Hours Pill -->
+      <div class="nav-time-pill" id="nav-time-pill" title="Local Time in Odisha, India (IST)">
+        <span class="time-pulse-dot"></span>
+        <span class="time-location">Balangir, IN</span>
+        <span class="time-divider">&bull;</span>
+        <span id="local-time-clock">--:--</span>
+        <span class="time-tz">IST</span>
+      </div>
+      <a href="#contact" class="hire-me-btn">// HIRE ME</a>
     </div>
   </nav>
 
@@ -319,6 +328,78 @@ app.<span class="code-func">post</span>(<span class="code-str">'/webhook'</span>
     </div>
   </section>
 
+  <!-- Product & Branding Showcase Section -->
+  <section id="branding" class="branding-section">
+    <div class="branding-header">
+      <span class="branding-kicker">// CREATIVE DIRECTION &amp; SYSTEMS</span>
+      <h2 class="section-title">PRODUCT &amp; BRANDING</h2>
+    </div>
+
+    <div class="branding-grid">
+      <!-- Left Column: Video Showcase (Clean, seamlessly looping, no buttons, no PiP) -->
+      <div class="branding-video-card">
+        <video 
+          id="branding-video" 
+          src="assets/product-branding.mp4?v=2" 
+          autoplay 
+          loop 
+          muted 
+          playsinline 
+          preload="metadata"
+          disablePictureInPicture
+          controlslist="nodownload nofullscreen noremoteplayback"
+        ></video>
+      </div>
+
+      <!-- Right Column: Content & Capabilities -->
+      <div class="branding-content">
+        <div class="branding-badge">
+          <span class="branding-badge-dot"></span>
+          <span>FULL-SPECTRUM DESIGN</span>
+        </div>
+        
+        <h3 class="branding-headline">Product Design &amp; Brand Systems Engineered Across All Sectors</h3>
+        
+        <p class="branding-desc">
+          Delivering end-to-end product design, brand identity systems, and high-impact visual craft. From early-stage startup branding to scalable enterprise software, building cohesive design ecosystems with deep cross-sector experience.
+        </p>
+
+        <div class="branding-pillars">
+          <div class="branding-pillar">
+            <div class="pillar-icon"><i class="fa-solid fa-shapes"></i></div>
+            <div class="pillar-info">
+              <h4>Brand Identity &amp; Strategy</h4>
+              <p>Visual language, logos, design tokens, and comprehensive brand guideline systems.</p>
+            </div>
+          </div>
+
+          <div class="branding-pillar">
+            <div class="pillar-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div class="pillar-info">
+              <h4>UI/UX &amp; Digital Products</h4>
+              <p>User-first wireframing, high-converting interfaces, and fluid micro-interactions.</p>
+            </div>
+          </div>
+
+          <div class="branding-pillar">
+            <div class="pillar-icon"><i class="fa-solid fa-film"></i></div>
+            <div class="pillar-info">
+              <h4>Motion &amp; Visual Storytelling</h4>
+              <p>Dynamic product reels, 3D motion graphics, and animated brand collateral.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="branding-tags">
+          <span class="branding-tag">Brand Strategy</span>
+          <span class="branding-tag">Design Systems</span>
+          <span class="branding-tag">Motion Graphics</span>
+          <span class="branding-tag">Cross-Sector Mastery</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Integrations / Tech Stack Section -->
   <section id="integrations" class="integrations-section">
     <h2 class="section-title">INTEGRATIONS & ECOSYSTEM</h2>
@@ -555,7 +636,9 @@ app.<span class="code-func">post</span>(<span class="code-str">'/webhook'</span>
           <span class="git-badge-text">AVAILABLE FOR WORK</span>
         </div>
         
-        <h2 class="git-title">Get in touch</h2>
+        <h2 class="git-title get-noticed-heading" id="get-noticed-heading">
+          Get <span class="noticed-word">n<span class="noticed-orb-wrapper"><span class="noticed-orb" id="noticed-orb" title="Click me!"><span class="orb-face" id="orb-face"><span class="orb-eye orb-eye-left"></span><span class="orb-eye orb-eye-right"></span><span class="orb-mouth"></span></span></span></span>ticed.</span>
+        </h2>
         
         <p class="git-desc">
           Open for freelance work, contract roles and collaborations &mdash; React Native apps in particular. WhatsApp gets the fastest reply.
@@ -577,36 +660,53 @@ app.<span class="code-func">post</span>(<span class="code-str">'/webhook'</span>
       <div class="git-right">
         <div class="git-card">
           
-          <!-- Row 1: Email -->
-          <div class="git-card-row">
-            <span class="git-label">EMAIL</span>
-            <a href="mailto:Debasishdash133@gmail.com" class="git-value git-link">Debasishdash133@gmail.com</a>
+          <!-- Inquiries Grid: Collaborate & General Inquiries -->
+          <div class="git-inquiries-row">
+            <div class="git-inquiry-block">
+              <span class="git-inquiry-kicker">Want to collaborate?</span>
+              <span class="git-inquiry-title">Work with us</span>
+              <div class="git-email-wrap">
+                <a href="mailto:debasishdash133@gmail.com" class="git-inquiry-email" data-email="debasishdash133@gmail.com" title="Click to copy email">
+                  <span>debasishdash133@gmail.com</span>
+                </a>
+                <button type="button" class="git-copy-btn" data-email="debasishdash133@gmail.com" title="Copy email" aria-label="Copy work email">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="git-inquiry-block">
+              <span class="git-inquiry-kicker">Want to say hi?</span>
+              <span class="git-inquiry-title">General inquiries</span>
+              <div class="git-email-wrap">
+                <a href="mailto:dashdebasish465@gmail.com" class="git-inquiry-email" data-email="dashdebasish465@gmail.com" title="Click to copy email">
+                  <span>dashdebasish465@gmail.com</span>
+                </a>
+                <button type="button" class="git-copy-btn" data-email="dashdebasish465@gmail.com" title="Copy email" aria-label="Copy general email">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+            </div>
           </div>
 
-          <!-- Row 2: Phone -->
-          <div class="git-card-row">
-            <span class="git-label">PHONE</span>
-            <a href="tel:+917853039849" class="git-value git-link">+91 7853039849</a>
-          </div>
-
-          <!-- Row 3: Based In -->
+          <!-- Row 2: Based In -->
           <div class="git-card-row">
             <span class="git-label">BASED IN</span>
             <span class="git-value">Odisha, Balangir, INDIA</span>
           </div>
 
-          <!-- Row 4: Elsewhere -->
+          <!-- Row 3: Elsewhere -->
           <div class="git-card-row">
             <span class="git-label">ELSEWHERE</span>
             <div class="git-socials">
-              <a href="#" class="git-social-btn" title="Portfolio" aria-label="Portfolio">
-                <i class="fa-solid fa-play" style="font-size: 0.75rem; transform: translateX(1px);"></i>
+              <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="git-social-btn" title="GitHub" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
               </a>
-              <a href="#" class="git-social-btn" title="LinkedIn" aria-label="LinkedIn">
+              <a href="https://linkedin.com/in/debasish-dash" target="_blank" rel="noopener noreferrer" class="git-social-btn" title="LinkedIn" aria-label="LinkedIn">
                 <i class="fa-brands fa-linkedin-in"></i>
               </a>
-              <a href="#" class="git-social-btn" title="GitHub" aria-label="GitHub">
-                <i class="fa-brands fa-github"></i>
+              <a href="https://wa.me/917853039849" target="_blank" rel="noopener noreferrer" class="git-social-btn" title="WhatsApp" aria-label="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
               </a>
             </div>
           </div>
@@ -625,6 +725,8 @@ app.<span class="code-func">post</span>(<span class="code-str">'/webhook'</span>
           <a href="#about">About</a>
           <a href="#services">Services</a>
           <a href="#projects">Projects</a>
+          <a href="#branding">Branding</a>
+          <a href="faq.html">FAQ</a>
           <span class="git-footer-divider">|</span>
           <a href="#privacy">Privacy policy</a>
           <a href="#terms">Terms</a>
@@ -709,7 +811,14 @@ app.<span class="code-func">post</span>(<span class="code-str">'/webhook'</span>
       </div>
     </div>
   </div>
-  <script src="spline-lazy.js?v=3" defer></script>
-  <script src="breakout-game.js?v=3" defer></script>
+
+  <!-- Floating Toast Notification -->
+  <div id="toast-pill" class="toast-pill" role="status" aria-live="polite">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <script src="spline-lazy.js?v=8" defer></script>
+  <script src="breakout-game.js?v=6" defer></script>
 </body>
 </html>

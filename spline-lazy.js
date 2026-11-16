@@ -85,3 +85,161 @@ window.toggleShowreel = function(btn) {
     btn.setAttribute('aria-label', 'Play video');
   }
 };
+
+// --- "Get noticed." Scroll-Triggered Animated Orb ---
+document.addEventListener("DOMContentLoaded", () => {
+  const heading = document.getElementById('get-noticed-heading');
+  const orb = document.getElementById('noticed-orb');
+  const face = document.getElementById('orb-face');
+
+  if (!heading || !orb || !face) return;
+
+  // Scroll detection to wake up / sleep
+  function checkOrbScroll() {
+    const rect = heading.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+    // Wake up when within visible reading range
+    if (rect.top < windowHeight * 0.88 && rect.bottom > windowHeight * 0.12) {
+      if (!heading.classList.contains('awake')) {
+        heading.classList.add('awake');
+      }
+    } else {
+      if (heading.classList.contains('awake')) {
+        heading.classList.remove('awake');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', checkOrbScroll, { passive: true });
+  window.addEventListener('resize', checkOrbScroll, { passive: true });
+  checkOrbScroll();
+
+  // Mouse tracking: eyes glance towards cursor when awake
+  let ticking = false;
+  window.addEventListener('mousemove', (e) => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (heading.classList.contains('awake')) {
+          const orbRect = orb.getBoundingClientRect();
+          const orbCenterX = orbRect.left + orbRect.width / 2;
+          const orbCenterY = orbRect.top + orbRect.height / 2;
+
+          const dx = e.clientX - orbCenterX;
+          const dy = e.clientY - orbCenterY;
+          const dist = Math.hypot(dx, dy);
+
+          // Subtle parallax glance (max 6px offset)
+          const maxOffset = 6;
+          const angle = Math.atan2(dy, dx);
+          const offsetDist = Math.min(maxOffset, dist * 0.015);
+
+          const moveX = Math.cos(angle) * offsetDist;
+          const moveY = Math.sin(angle) * offsetDist;
+
+          face.style.transform = `translate(${moveX.toFixed(1)}px, ${moveY.toFixed(1)}px)`;
+        } else {
+          face.style.transform = 'translate(0px, 0px)';
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Playful wink/blink on click or touch
+  orb.addEventListener('click', () => {
+    heading.classList.add('wink');
+    setTimeout(() => {
+      heading.classList.remove('wink');
+    }, 320);
+  });
+});
+
+// --- Live Clock in Navbar (Asia/Kolkata / IST) ---
+document.addEventListener("DOMContentLoaded", () => {
+  const clockEl = document.getElementById('local-time-clock');
+  if (!clockEl) return;
+
+  function updateClock() {
+    try {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString('en-US', {
+        timeZone: 'Asia/Kolkata',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      });
+      clockEl.textContent = timeStr;
+    } catch (e) {
+      const now = new Date();
+      clockEl.textContent = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+    }
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
+});
+
+// --- FAQ Accordion Interactive Toggle ---
+document.addEventListener("DOMContentLoaded", () => {
+  const faqItems = document.querySelectorAll('.faq-item');
+  if (!faqItems.length) return;
+
+  faqItems.forEach(item => {
+    const trigger = item.querySelector('.faq-trigger');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+
+      // Close other accordion items for clean UX
+      faqItems.forEach(other => {
+        if (other !== item) {
+          other.classList.remove('active');
+          const otherTrigger = other.querySelector('.faq-trigger');
+          if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (isActive) {
+        item.classList.remove('active');
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('active');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+});
+
+// --- One-Click Copy Email & Toast Notification ---
+document.addEventListener("DOMContentLoaded", () => {
+  const toast = document.getElementById('toast-pill');
+  const toastMsg = document.getElementById('toast-message');
+  let toastTimer = null;
+
+  function showToast(message) {
+    if (!toast || !toastMsg) return;
+    toastMsg.textContent = message;
+    toast.classList.add('show');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2400);
+  }
+
+  // Bind to copy buttons and email links
+  document.querySelectorAll('.git-copy-btn, .git-inquiry-email').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const email = btn.getAttribute('data-email');
+      if (email && navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(() => {
+          showToast(`Copied ${email} to clipboard!`);
+        }).catch(() => {
+          showToast(`Email: ${email}`);
+        });
+      }
+    });
+  });
+});
