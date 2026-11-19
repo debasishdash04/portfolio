@@ -104,61 +104,6 @@ body {
 .nav-cta {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-}
-
-/* ── Live Local Time Pill in Navbar ── */
-.nav-time-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 0.38rem 0.85rem;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 9999px;
-  font-family: 'JetBrains Mono', monospace, -apple-system, sans-serif;
-  font-size: 0.74rem;
-  font-weight: 500;
-  color: #d1d5db;
-  letter-spacing: 0.3px;
-  user-select: none;
-  backdrop-filter: blur(10px);
-  transition: all 0.25s ease;
-}
-
-.nav-time-pill:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.18);
-  color: #ffffff;
-}
-
-.time-pulse-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 8px #10b981;
-  animation: pulseDot 2s infinite ease-in-out;
-}
-
-.time-location {
-  color: #9ca3af;
-  font-weight: 600;
-}
-
-.time-divider {
-  color: #4b5563;
-  font-size: 0.65rem;
-}
-
-#local-time-clock {
-  color: #ffffff;
-  font-weight: 700;
-}
-
-.time-tz {
-  color: #6b7280;
-  font-size: 0.68rem;
 }
 
 .hire-me-btn {
@@ -2561,10 +2506,6 @@ body {
   .faq-answer p {
     padding: 0 1.35rem 1.35rem 1.35rem;
     font-size: 0.92rem;
-  }
-  .nav-time-pill .time-location,
-  .nav-time-pill .time-divider {
-    display: none;
   }
 
   /* ── Get in Touch ── */

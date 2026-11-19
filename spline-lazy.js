@@ -156,31 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// --- Live Clock in Navbar (Asia/Kolkata / IST) ---
-document.addEventListener("DOMContentLoaded", () => {
-  const clockEl = document.getElementById('local-time-clock');
-  if (!clockEl) return;
-
-  function updateClock() {
-    try {
-      const now = new Date();
-      const timeStr = now.toLocaleTimeString('en-US', {
-        timeZone: 'Asia/Kolkata',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true
-      });
-      clockEl.textContent = timeStr;
-    } catch (e) {
-      const now = new Date();
-      clockEl.textContent = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
-    }
-  }
-
-  updateClock();
-  setInterval(updateClock, 1000);
-});
-
 // --- FAQ Accordion Interactive Toggle ---
 document.addEventListener("DOMContentLoaded", () => {
   const faqItems = document.querySelectorAll('.faq-item');
