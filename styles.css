@@ -426,212 +426,413 @@ body {
   font-size: 0.75rem;
 }
 
-/* ── Featured Projects Section ────────────────────────── */
+/* ── Featured Projects Section (macOS Interactive 3D Folders) ── */
 .projects-section {
   position: relative;
   z-index: 2;
   padding: 6rem 4rem;
   content-visibility: auto;
-  contain-intrinsic-size: 0 900px;
+  contain-intrinsic-size: 0 850px;
 }
 
-.projects-grid {
+.projects-header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  max-width: 1300px;
+  margin: 0 auto 3.5rem auto;
+  gap: 1.5rem;
+}
+
+.projects-header-left {
+  max-width: 650px;
+}
+
+.projects-kicker {
+  display: inline-block;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.projects-subtitle {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin-top: 0.6rem;
+  line-height: 1.6;
+}
+
+.projects-github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.6rem 1.15rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.projects-github-link:hover {
+  background: rgba(0, 229, 255, 0.08);
+  border-color: rgba(0, 229, 255, 0.35);
+  color: var(--accent);
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* 4-Folder Grid */
+.folders-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6rem;
   max-width: 1300px;
   margin: 0 auto;
 }
 
-.project-card {
-  background: rgba(15, 15, 22, 0.85);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: all 0.35s ease;
-  backdrop-filter: blur(8px);
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(0,229,255,0.25);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 15px rgba(0,229,255,0.06);
-}
-
-/* Project preview box */
-.project-preview-box {
-  position: relative;
-  padding: 2rem 1.5rem;
-  background: linear-gradient(135deg, rgba(0,229,255,0.06) 0%, rgba(139,92,246,0.06) 100%);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  min-height: 200px;
+/* Single Folder Card */
+.project-folder-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  width: 100%;
 }
 
-.project-preview-box.fintech {
-  background: linear-gradient(135deg, rgba(34,211,238,0.06) 0%, rgba(59,130,246,0.06) 100%);
+.folder-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  perspective: 1000px;
+  cursor: pointer;
+  user-select: none;
 }
 
-.project-preview-box.security {
-  background: linear-gradient(135deg, rgba(139,92,246,0.06) 0%, rgba(236,72,153,0.06) 100%);
+/* Back Plate of macOS Folder */
+.folder-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #171825 0%, #0e0f17 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  overflow: visible;
 }
 
-.project-preview-overlay {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1rem;
+.folder-back-tab {
+  position: absolute;
+  top: -16px;
+  left: 0;
+  width: 95px;
+  height: 18px;
+  background: #171825;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: none;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
-.project-kicker {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--accent);
-  opacity: 0.8;
+/* Inner Papers Container */
+.folder-papers {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 22px;
+  height: 165px;
+  pointer-events: none;
+  z-index: 2;
 }
 
-.project-preview-badge {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  padding: 0.3rem 0.7rem;
-  background: rgba(0,229,255,0.1);
-  border: 1px solid rgba(0,229,255,0.2);
-  border-radius: 5px;
-  color: #e2e8f0;
-}
-
-.project-preview-badge i {
-  margin-right: 4px;
-  color: var(--accent);
-}
-
-/* Code preview */
-.project-visual-graphic {
-  background: rgba(0,0,0,0.5);
+/* Base Paper Styling */
+.folder-paper {
+  position: absolute;
+  bottom: 0;
   border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.06);
+  transform-origin: bottom center;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.45s ease, filter 0.45s ease;
+  user-select: none;
 }
 
-.code-header {
+/* Paper 1: Left Dark Card (Code / Architecture) */
+.folder-paper.paper-1 {
+  width: 78%;
+  height: 125px;
+  left: 11%;
+  background: #151622;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  padding: 12px 14px;
+  transform: rotate(-6deg) translateY(0);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+.folder-paper.paper-1 .paper-badge {
+  background: rgba(0, 229, 255, 0.12);
+  color: var(--accent);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+}
+
+/* Paper 3: Right Dark Card (Telemetry / Analytics) */
+.folder-paper.paper-3 {
+  width: 78%;
+  height: 125px;
+  right: 11%;
+  background: #181928;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  padding: 12px 14px;
+  transform: rotate(6deg) translateY(0);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+  z-index: 2;
+}
+
+.folder-paper.paper-3 .paper-badge {
+  background: rgba(139, 92, 246, 0.12);
+  color: #c084fc;
+  border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+/* Paper 2: Center Hero Card (High Contrast White / Primary Metrics) */
+.folder-paper.paper-2 {
+  width: 84%;
+  height: 138px;
+  left: 8%;
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 11px;
+  padding: 14px 16px;
+  transform: rotate(0deg) translateY(0);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.folder-paper.paper-2 .paper-badge {
+  background: rgba(15, 23, 42, 0.08);
+  color: #0f172a;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+}
+
+.folder-paper.paper-2 .paper-title {
+  color: #0f172a;
+}
+
+/* Paper Typography & Elements */
+.paper-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 7px;
+  border-radius: 5px;
+  margin-bottom: 6px;
+}
+
+.paper-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.paper-snippet {
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 0.62rem;
+  line-height: 1.45;
+  color: #64748b;
+  word-break: break-all;
+}
+
+.paper-metric-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.paper-big-num {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #090a10;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.paper-metric-lbl {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.paper-progress-bar {
+  width: 100%;
+  height: 5px;
+  background: rgba(15, 23, 42, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.paper-progress-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #00e5ff 0%, #3b82f6 100%);
+  border-radius: 999px;
+}
+
+/* Front Flap of macOS Folder */
+.folder-front {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 145px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(28, 30, 44, 0.94) 0%, rgba(14, 15, 23, 0.98) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transform-origin: bottom center;
+  transition: transform 0.42s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.42s ease, border-color 0.42s ease;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px 18px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.folder-front-tab {
+  position: absolute;
+  top: -17px;
+  left: 0;
+  width: 95px;
+  height: 19px;
+  background: rgba(28, 30, 44, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: none;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 0.6rem 1rem;
-  background: rgba(255,255,255,0.03);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-.code-header .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-}
-
-.dot.red { background: #ff5f56; }
-.dot.yellow { background: #ffbd2e; }
-.dot.green { background: #27c93f; }
-
-.code-title {
+  padding-left: 14px;
+  color: #64748b;
   font-size: 0.7rem;
-  color: #6a6a6a;
-  margin-left: 8px;
-  font-family: 'Consolas', monospace;
 }
 
-.code-snippet {
-  padding: 1rem;
-  font-size: 0.75rem;
-  line-height: 1.7;
-  color: #c9d1d9;
-  font-family: 'Consolas', 'Fira Code', monospace;
-  overflow-x: auto;
+.folder-front-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.code-keyword { color: #ff7b72; }
-.code-func    { color: #d2a8ff; }
-.code-str     { color: #a5d6ff; }
-
-/* Project details */
-.project-details {
-  padding: 1.5rem;
-}
-
-.project-title {
-  font-size: 1.15rem;
+.folder-project-title {
+  font-size: 1.05rem;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+  margin: 0;
 }
 
-.project-desc {
-  font-size: 0.85rem;
-  color: #8892b0;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 1.2rem;
-}
-
-.project-tag {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  padding: 0.2rem 0.6rem;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 5px;
-  color: #94a3b8;
-}
-
-.project-links {
-  display: flex;
-  gap: 0.8rem;
-}
-
-.project-btn {
+.folder-arrow-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #090a10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
   text-decoration: none;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
 }
 
-.project-btn.primary {
-  background: rgba(0,229,255,0.1);
-  border: 1px solid rgba(0,229,255,0.3);
+.folder-arrow-btn:hover {
+  background: var(--accent);
+  color: #05070f;
+  transform: scale(1.08);
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.6);
+}
+
+/* ── 3D Interactive Hover Effects ── */
+.project-folder-card:hover .folder-front {
+  transform: rotateX(-24deg) translateY(4px);
+  border-color: rgba(0, 229, 255, 0.35);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.65), 0 0 20px rgba(0, 229, 255, 0.12);
+}
+
+.project-folder-card:hover .folder-paper.paper-1 {
+  transform: rotate(-15deg) translateY(-54px) translateX(-18px);
+  filter: brightness(1.08);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.55);
+}
+
+.project-folder-card:hover .folder-paper.paper-3 {
+  transform: rotate(15deg) translateY(-48px) translateX(18px);
+  filter: brightness(1.08);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.55);
+}
+
+.project-folder-card:hover .folder-paper.paper-2 {
+  transform: rotate(0deg) translateY(-70px) scale(1.03);
+  box-shadow: 0 22px 42px rgba(0, 0, 0, 0.7), 0 0 24px rgba(255, 255, 255, 0.2);
+}
+
+/* Footer Below Each Folder */
+.folder-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 4px 0 4px;
+  gap: 8px;
+}
+
+.folder-subtitle {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.folder-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.76rem;
+  color: #94a3b8;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.folder-action-link:hover {
   color: var(--accent);
 }
 
-.project-btn.primary:hover {
-  background: rgba(0,229,255,0.2);
-  box-shadow: 0 0 15px rgba(0,229,255,0.15);
-}
-
-.project-btn.secondary {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.1);
-  color: #94a3b8;
-}
-
-.project-btn.secondary:hover {
-  border-color: rgba(255,255,255,0.25);
-  color: #e2e8f0;
-}
-
-.project-btn i {
-  margin-right: 4px;
+.folder-action-link i {
+  font-size: 0.68rem;
 }
 
 /* ── Product & Branding Showcase Section ── */
@@ -2295,6 +2496,13 @@ body {
 }
 
 /* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .folders-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
 @media (max-width: 768px) {
 
   /* ── Navbar ── */
@@ -2393,26 +2601,19 @@ body {
     justify-content: center;
   }
 
-  /* ── Projects ── */
+  /* ── Projects (Folders) ── */
   .projects-section {
     padding: 3.5rem 1.2rem 2rem 1.2rem;
   }
-  .projects-grid {
+  .projects-header-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+  .folders-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  /* Fix code snippet overflow in project cards on mobile */
-  .project-preview-box {
-    overflow: hidden;
-  }
-  .code-snippet {
-    font-size: 0.65rem;
-    overflow-x: hidden;
-    white-space: pre-wrap;
-    word-break: break-all;
-  }
-  .project-visual-graphic {
-    overflow: hidden;
+    gap: 2.2rem;
   }
 
   /* ── Branding Section Mobile ── */

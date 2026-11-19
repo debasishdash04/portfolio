@@ -4,7 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DEBASISH DASH — Full-Stack Developer & Product Builder</title>
-  <link rel="stylesheet" href="styles.css?v=15">
+  <!-- SEO & Social -->
+  <meta name="description" content="Debasish Dash — Full-Stack Developer & Product Builder. Specializing in React Native, AI-powered products, and scalable web apps. Available for freelance and contract work.">
+  <meta name="author" content="Debasish Dash">
+  <meta name="robots" content="index, follow">
+  <!-- Open Graph -->
+  <meta property="og:title" content="DEBASISH DASH — Full-Stack Developer & Product Builder">
+  <meta property="og:description" content="React Native developer & AI product builder. Open for freelance, contracts, and collaborations.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://debasishdash04.github.io">
+  <!-- Security Headers via Meta -->
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https:; frame-src https://my.spline.design https://prod.spline.design; object-src 'none'; base-uri 'self';">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <link rel="stylesheet" href="styles.css?v=16">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Preconnect to Spline CDN so 3D assets start fetching early -->
@@ -207,115 +222,237 @@
     </div>
   </section>
 
-  <!-- Featured Projects Showcase Section -->
+  <!-- Featured Projects Showcase Section (macOS Interactive 3D Folders) -->
   <section id="projects" class="projects-section">
-    <h2 class="section-title">FEATURED PROJECTS</h2>
-    <div class="projects-grid">
-      
-      <!-- Project Card 1 -->
-      <article class="project-card">
-        <div class="project-preview-box">
-          <div class="project-preview-overlay">
-            <span class="project-kicker">AI &amp; FULL-STACK</span>
-            <div class="project-preview-badge"><i class="fa-solid fa-bolt"></i> LIVE SYSTEM</div>
-          </div>
-          <div class="project-visual-graphic">
-            <div class="code-header">
-              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-              <span class="code-title">apex-ai-core.py</span>
-            </div>
-            <pre class="code-snippet"><code><span class="code-keyword">async def</span> <span class="code-func">process_query</span>(prompt: str):
-  pipeline = RAGPipeline(model=<span class="code-str">"claude-3.5"</span>)
-  <span class="code-keyword">return await</span> pipeline.execute(prompt)</code></pre>
-          </div>
-        </div>
-        <div class="project-details">
-          <h3 class="project-title">Apex AI SaaS Platform</h3>
-          <p class="project-desc">Intelligent analytics dashboard featuring real-time LLM query processing, RAG pipelines, and automated reporting workflows.</p>
-          <div class="project-tags">
-            <span class="project-tag">React 19</span>
-            <span class="project-tag">FastAPI</span>
-            <span class="project-tag">LangChain</span>
-            <span class="project-tag">PostgreSQL</span>
-            <span class="project-tag">Tailwind</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="project-btn primary">// VIEW DEMO <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="project-btn secondary"><i class="fa-brands fa-github"></i> REPO</a>
-          </div>
-        </div>
-      </article>
+    <div class="projects-header-wrapper">
+      <div class="projects-header-left">
+        <span class="projects-kicker">// WORK &amp; CASE STUDIES</span>
+        <h2 class="section-title">FEATURED PROJECTS</h2>
+        <p class="projects-subtitle">Independent projects and engineering systems. Open a folder to explore a project or case study.</p>
+      </div>
+      <div class="projects-header-right">
+        <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="projects-github-link">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+          <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i>
+        </a>
+      </div>
+    </div>
 
-      <!-- Project Card 2 -->
-      <article class="project-card">
-        <div class="project-preview-box fintech">
-          <div class="project-preview-overlay">
-            <span class="project-kicker">FINTECH &amp; AUTOMATION</span>
-            <div class="project-preview-badge"><i class="fa-solid fa-shield-halved"></i> SECURE GATEWAY</div>
-          </div>
-          <div class="project-visual-graphic">
-            <div class="code-header">
-              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-              <span class="code-title">omnipay-webhook.js</span>
-            </div>
-            <pre class="code-snippet"><code><span class="code-keyword">const</span> stripe = <span class="code-func">require</span>(<span class="code-str">'stripe'</span>)(KEY);
-app.<span class="code-func">post</span>(<span class="code-str">'/webhook'</span>, <span class="code-keyword">async</span> (req, res) => {
-  <span class="code-keyword">await</span> paymentService.<span class="code-func">verifyAndRoute</span>(req);
-});</code></pre>
-          </div>
-        </div>
-        <div class="project-details">
-          <h3 class="project-title">OmniPay Global Checkout</h3>
-          <p class="project-desc">Ultra-fast global payment gateway with automated webhooks, Stripe/PayPal integration, and multi-currency transaction routing.</p>
-          <div class="project-tags">
-            <span class="project-tag">Node.js</span>
-            <span class="project-tag">Express</span>
-            <span class="project-tag">Stripe API</span>
-            <span class="project-tag">Redis</span>
-            <span class="project-tag">Docker</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="project-btn primary">// VIEW DEMO <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="project-btn secondary"><i class="fa-brands fa-github"></i> REPO</a>
-          </div>
-        </div>
-      </article>
-
+    <!-- 4 Interactive 3D macOS Folders Grid -->
+    <div class="folders-grid">
       
-      <!-- Project Card 3 -->
-      <article class="project-card">
-        <div class="project-preview-box security">
-          <div class="project-preview-overlay">
-            <span class="project-kicker">CLOUD &amp; SECURITY</span>
-            <div class="project-preview-badge"><i class="fa-solid fa-server"></i> INFRASTRUCTURE</div>
-          </div>
-          <div class="project-visual-graphic">
-            <div class="code-header">
-              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-              <span class="code-title">cybervault-cluster.yml</span>
+      <!-- Folder 1: Apex AI -->
+      <div class="project-folder-card">
+        <div class="folder-wrapper">
+          <div class="folder-back"><div class="folder-back-tab"></div></div>
+          
+          <div class="folder-papers">
+            <!-- Paper 1 -->
+            <div class="folder-paper paper-1">
+              <div class="paper-badge">FastAPI Core</div>
+              <div class="paper-title">rag-engine.py</div>
+              <div class="paper-snippet">pipeline = RAG(model="claude-3.5")<br>await pipeline.execute(p)</div>
             </div>
-            <pre class="code-snippet"><code><span class="code-keyword">services</span>:
-  <span class="code-func">api</span>:
-    <span class="code-keyword">image</span>: cybervault/core:latest
-    <span class="code-keyword">deploy</span>: { <span class="code-str">replicas</span>: 8 }</code></pre>
+
+            <!-- Paper 2 -->
+            <div class="folder-paper paper-2">
+              <div class="paper-badge">Live System</div>
+              <div class="paper-title">Apex AI SaaS</div>
+              <div class="paper-metric-row">
+                <span class="paper-big-num">99.8%</span>
+                <span class="paper-metric-lbl">Accuracy</span>
+              </div>
+              <div class="paper-progress-bar"><span style="width: 88%;"></span></div>
+            </div>
+
+            <!-- Paper 3 -->
+            <div class="folder-paper paper-3">
+              <div class="paper-badge">Telemetry</div>
+              <div class="paper-title">Vector Search</div>
+              <div class="paper-snippet">Latency: 110ms<br>pgvector cluster</div>
+            </div>
+          </div>
+
+          <div class="folder-front">
+            <div class="folder-front-tab"><i class="fa-regular fa-folder folder-tab-icon"></i></div>
+            <div class="folder-front-top"></div>
+            <div class="folder-front-bottom">
+              <h3 class="folder-project-title">Apex AI SaaS</h3>
+              <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="folder-arrow-btn" aria-label="Open Apex AI">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
           </div>
         </div>
-        <div class="project-details">
-          <h3 class="project-title">CyberVault Cloud Manager</h3>
-          <p class="project-desc">High-security cloud infrastructure management portal with role-based access control, live cluster metrics, and automated backups.</p>
-          <div class="project-tags">
-            <span class="project-tag">Svelte</span>
-            <span class="project-tag">Django</span>
-            <span class="project-tag">Docker</span>
-            <span class="project-tag">PostgreSQL</span>
-            <span class="project-tag">Tailwind</span>
+
+        <div class="folder-footer">
+          <span class="folder-subtitle">Dual-engine AI workspace</span>
+          <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="folder-action-link">
+            <span>View project</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Folder 2: OmniPay -->
+      <div class="project-folder-card">
+        <div class="folder-wrapper">
+          <div class="folder-back"><div class="folder-back-tab"></div></div>
+          
+          <div class="folder-papers">
+            <!-- Paper 1 -->
+            <div class="folder-paper paper-1">
+              <div class="paper-badge">Node.js API</div>
+              <div class="paper-title">webhook.js</div>
+              <div class="paper-snippet">stripe = Stripe(KEY)<br>await verifyAndRoute(req)</div>
+            </div>
+
+            <!-- Paper 2 -->
+            <div class="folder-paper paper-2">
+              <div class="paper-badge">Fintech Gateway</div>
+              <div class="paper-title">OmniPay Checkout</div>
+              <div class="paper-metric-row">
+                <span class="paper-big-num">135+</span>
+                <span class="paper-metric-lbl">Currencies</span>
+              </div>
+              <div class="paper-progress-bar"><span style="width: 95%;"></span></div>
+            </div>
+
+            <!-- Paper 3 -->
+            <div class="folder-paper paper-3">
+              <div class="paper-badge">Redis Cache</div>
+              <div class="paper-title">Transaction Cache</div>
+              <div class="paper-snippet">Throughput: 12k req/s<br>Zero drop rate</div>
+            </div>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="project-btn primary">// VIEW DEMO <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="project-btn secondary"><i class="fa-brands fa-github"></i> REPO</a>
+
+          <div class="folder-front">
+            <div class="folder-front-tab"><i class="fa-regular fa-folder folder-tab-icon"></i></div>
+            <div class="folder-front-top"></div>
+            <div class="folder-front-bottom">
+              <h3 class="folder-project-title">OmniPay Checkout</h3>
+              <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="folder-arrow-btn" aria-label="Open OmniPay">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
           </div>
         </div>
-      </article>
+
+        <div class="folder-footer">
+          <span class="folder-subtitle">Multi-currency automation</span>
+          <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="folder-action-link">
+            <span>View project</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Folder 3: ResumeLens -->
+      <div class="project-folder-card">
+        <div class="folder-wrapper">
+          <div class="folder-back"><div class="folder-back-tab"></div></div>
+          
+          <div class="folder-papers">
+            <!-- Paper 1 -->
+            <div class="folder-paper paper-1">
+              <div class="paper-badge">NLP Matcher</div>
+              <div class="paper-title">embeddings.py</div>
+              <div class="paper-snippet">score = cosine_sim(v1, v2)<br>return rank_candidates()</div>
+            </div>
+
+            <!-- Paper 2 (High contrast white sheet) -->
+            <div class="folder-paper paper-2">
+              <div class="paper-badge">AI Screening</div>
+              <div class="paper-title">Candidate Lens</div>
+              <div class="paper-metric-row">
+                <span class="paper-big-num">94%</span>
+                <span class="paper-metric-lbl">Match Score</span>
+              </div>
+              <div class="paper-progress-bar"><span style="width: 92%;"></span></div>
+            </div>
+
+            <!-- Paper 3 -->
+            <div class="folder-paper paper-3">
+              <div class="paper-badge">Talent Engine</div>
+              <div class="paper-title">Semantic Search</div>
+              <div class="paper-snippet">Parsed: 50,000+ CVs<br>Deep criteria filter</div>
+            </div>
+          </div>
+
+          <div class="folder-front">
+            <div class="folder-front-tab"><i class="fa-regular fa-folder folder-tab-icon"></i></div>
+            <div class="folder-front-top"></div>
+            <div class="folder-front-bottom">
+              <h3 class="folder-project-title">ResumeLens AI</h3>
+              <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="folder-arrow-btn" aria-label="Open ResumeLens">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="folder-footer">
+          <span class="folder-subtitle">Semantic recruitment &amp; AI</span>
+          <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="folder-action-link">
+            <span>View project</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Folder 4: CyberVault -->
+      <div class="project-folder-card">
+        <div class="folder-wrapper">
+          <div class="folder-back"><div class="folder-back-tab"></div></div>
+          
+          <div class="folder-papers">
+            <!-- Paper 1 -->
+            <div class="folder-paper paper-1">
+              <div class="paper-badge">Cluster Spec</div>
+              <div class="paper-title">cluster.yml</div>
+              <div class="paper-snippet">image: cybervault:latest<br>replicas: 8 | rbac: true</div>
+            </div>
+
+            <!-- Paper 2 -->
+            <div class="folder-paper paper-2">
+              <div class="paper-badge">Cloud Portal</div>
+              <div class="paper-title">CyberVault Core</div>
+              <div class="paper-metric-row">
+                <span class="paper-big-num">99.99%</span>
+                <span class="paper-metric-lbl">Uptime</span>
+              </div>
+              <div class="paper-progress-bar"><span style="width: 99%;"></span></div>
+            </div>
+
+            <!-- Paper 3 -->
+            <div class="folder-paper paper-3">
+              <div class="paper-badge">Security Guard</div>
+              <div class="paper-title">Zero-Trust Logs</div>
+              <div class="paper-snippet">Encrypted: AES-256<br>Automated failover</div>
+            </div>
+          </div>
+
+          <div class="folder-front">
+            <div class="folder-front-tab"><i class="fa-regular fa-folder folder-tab-icon"></i></div>
+            <div class="folder-front-top"></div>
+            <div class="folder-front-bottom">
+              <h3 class="folder-project-title">CyberVault</h3>
+              <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="folder-arrow-btn" aria-label="Open CyberVault">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="folder-footer">
+          <span class="folder-subtitle">Cloud security &amp; cluster portal</span>
+          <a href="https://github.com/debasishdash04" target="_blank" rel="noopener noreferrer" class="folder-action-link">
+            <span>View project</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
 
     </div>
   </section>
